@@ -8,6 +8,14 @@ const Utills = () => {
     const pastDate = new Date();
     pastDate.setDate(currentDate.getDate() - 30);
 
+    const cards: {
+        "loans": string,
+        "birthdays": string
+    } = {
+        loans: "Loans Due",
+        birthdays: "Birthdays"
+    }
+
     const formatDate = (date: Date): Dayjs => {
         return dayjs(date);
     };
@@ -20,6 +28,7 @@ const Utills = () => {
     return {
         currentDate: startDate,
         pastDate: endDate,
+        cards,
     };
 }
 

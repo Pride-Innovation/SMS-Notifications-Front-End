@@ -10,12 +10,19 @@ interface IMultiActionAreaCard {
     color: string;
     header: string;
     name: string;
+    handleCardClick: (name: string) => void
 }
 
-export default function MultiActionAreaCard({ icon, color, header, name }: IMultiActionAreaCard) {
+export default function MultiActionAreaCard({
+    icon,
+    color,
+    header,
+    name,
+    handleCardClick
+}: IMultiActionAreaCard) {
     return (
         <Card sx={{ width: "100%" }}>
-            <CardActionArea sx={{ display: "flex", justifyContent: "start" }}>
+            <CardActionArea onClick={() => handleCardClick(name)} sx={{ display: "flex", justifyContent: "start" }}>
                 <Box sx={{ bgcolor: color, p: 4 }}>
                     {icon}
                 </Box>
