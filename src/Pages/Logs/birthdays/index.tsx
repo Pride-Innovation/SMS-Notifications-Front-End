@@ -1,35 +1,26 @@
-import { useContext, useEffect } from "react"
-import { ILogsResponse } from "./interface"
-import { fetchLogsService } from "../FileUpload/service";
-import { Box, Button, Grid, Typography } from "@mui/material";
-import { DataGrid, GridColDef } from "@mui/x-data-grid";
-import moment from "moment";
-import Utills from "./utills";
-import ParentComponent from "./DateRangePicker";
+import { Box, Grid, Typography } from '@mui/material'
+import { useContext, useEffect } from 'react'
+import ParentComponent from '../DateRangePicker'
+import { DateContext } from '../../../context/DateContext';
 import { Dayjs } from "dayjs";
-import { DateContext } from "../../context/DateContext";
-import { useNavigate } from "react-router";
-import { ROUTES } from "../../core/routes";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
-import CustomTablePagination from "./TablePagination";
-import { PageContext } from "../../context/PageContext";
+import Utills from '../utills';
+import { PageContext } from '../../../context/PageContext';
+import { ILogsResponse } from '../interface';
+import { DataGrid, GridColDef } from '@mui/x-data-grid';
+import CustomTablePagination from '../TablePagination';
+import moment from "moment";
 
-const Logs = () => {
-    const navigate = useNavigate();
-    const { currentDate, pastDate  } = Utills();
+
+const index = () => {
     const { startDate, endDate, setEndDate, setStartDate } = useContext(DateContext);
+    const { currentDate, pastDate } = Utills();
     const {
         pageSize,
-        logs,
-        setLogs,
+        birthdayLogs,
+        setBirthdayLogs,
         count,
         setCount
     } = useContext(PageContext);
-
-    const { handleTablePagination } = CustomTablePagination({
-        start: startDate?.format('YYYY-MM-DD') as string,
-        end: endDate?.format('YYYY-MM-DD') as string
-    });
 
     const handleStartDateChange = (date: Dayjs | null) => {
         setStartDate(date);
@@ -39,13 +30,18 @@ const Logs = () => {
         setEndDate(date);
     };
 
+    const { handleTablePagination } = CustomTablePagination({
+        start: startDate?.format('YYYY-MM-DD') as string,
+        end: endDate?.format('YYYY-MM-DD') as string
+    });
+
     const fetchLogs = async () => {
         const start = startDate?.format('YYYY-MM-DD') as string;
         const end = endDate?.format('YYYY-MM-DD') as string;
         if (!start || !end) return;
-        const response = await fetchLogsService(start, end, pageSize, 1) as ILogsResponse;
-        setCount(response?.count);
-        setLogs(response?.results.logs);
+        // const response = await fetchLogsService(start, end, pageSize, 1) as ILogsResponse;
+        setCount(birthdayLogs?.length);
+        setBirthdayLogs(birthdayLogs);
     }
 
     useEffect(() => { fetchLogs() }, [currentDate, pastDate]);
@@ -103,7 +99,7 @@ const Logs = () => {
             </Grid>
             <Grid item xs={12}>
                 <Box sx={{ width: '100%' }}>
-                    {logs?.length > 0 &&
+                    {birthdayLogs?.length > 0 &&
                         <DataGrid
                             sx={{
                                 '& .MuiDataGrid-columnHeaders': {
@@ -115,7 +111,7 @@ const Logs = () => {
                                 },
                             }}
                             loading={false}
-                            rows={logs}
+                            rows={birthdayLogs}
                             columns={columns}
                             rowCount={count}
                             paginationMode={"server"}
@@ -137,4 +133,4 @@ const Logs = () => {
     )
 }
 
-export default Logs;
+export default index

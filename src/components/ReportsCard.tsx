@@ -31,7 +31,7 @@ export default function MultiActionAreaCard({
                         {header}
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        Lizards {name} Messages
+                        200 {name} Messages
                     </Typography>
                 </CardContent>
             </CardActionArea>

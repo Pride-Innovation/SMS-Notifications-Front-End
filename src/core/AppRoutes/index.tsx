@@ -1,6 +1,6 @@
 import { Route, Routes } from 'react-router'
 import { ROUTES } from '../routes'
-import Logs from '../../Pages/Logs'
+import Logs from '../../Pages/Logs/loans'
 import FileUpload from '../../Pages/FileUpload'
 import DashboardLayoutBasic from '../../Pages/Dashboard'
 import Login from '../../Pages/Authentication/Login'

@@ -13,6 +13,18 @@ interface ILogs {
     amount_due: string | number;
 }
 
+
+interface IBirthdayLog {
+    id?: string | number;
+    phone_number: string;
+    account_name: string;
+    status: string;
+    created_at: string;
+    client_type: string;
+    email: string;
+    dateOfBirth: string
+}
+
 interface IResults {
     count: number;
     logs: Array<ILogs>;
@@ -49,4 +61,4 @@ interface IParentComponent {
     handleEndDateChange: (date: Dayjs | null) => void;
 }
 
-export type { ILogs, ILogsResponse, IRequestBody, IParentComponent, ICustomTablePagination };
+export type { ILogs, ILogsResponse, IRequestBody, IParentComponent, ICustomTablePagination, IBirthdayLog };
