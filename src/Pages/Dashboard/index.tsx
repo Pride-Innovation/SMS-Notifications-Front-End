@@ -1,4 +1,3 @@
-import * as React from 'react';
 import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import AppBar from '@mui/material/AppBar';
@@ -75,7 +74,8 @@ export default function ClippedDrawer() {
                 </Box>
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                <Toolbar />
+                {/* <Toolbar /> */}
+                <Box mt={3} />
                 <Outlet />
             </Box>
         </Box>

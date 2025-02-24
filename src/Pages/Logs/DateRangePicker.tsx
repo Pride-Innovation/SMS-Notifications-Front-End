@@ -19,7 +19,7 @@ const ParentComponent: React.FC<IParentComponent> = ({
                 onStartDateChange={handleStartDateChange}
                 onEndDateChange={handleEndDateChange}
             /> */}
-            <Grid item xs={8} >
+            <Grid item xs={8}>
                 <Stack direction="row" spacing={3} sx={{ width: "100%" }}>
                     <MultiActionAreaCard
                         header='Loans Due'

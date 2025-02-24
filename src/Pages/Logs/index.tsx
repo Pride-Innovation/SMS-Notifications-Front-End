@@ -92,18 +92,13 @@ const Logs = () => {
     return (
         <Grid container spacing={4} padding={4}>
             <Grid item xs={12}>
-                <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%" }}>
+                <Box sx={{ display: "flex", justifyContent: "space-between", width: "100%", bgcolor: "#EEEEEE", p: 3 }}>
                     <ParentComponent
                         startDate={startDate}
                         endDate={endDate}
                         handleEndDateChange={handleEndDateChange}
                         handleStartDateChange={handleStartDateChange}
                     />
-                    <Button
-                        startIcon={<ArrowBackIcon />}
-                        onClick={() => navigate(ROUTES.HOME)}
-                        sx={{ minWidth: "200px", maxHeight: "40px" }}
-                        variant="contained"> Back </Button>
                 </Box>
             </Grid>
             <Grid item xs={12}>
