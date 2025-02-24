@@ -16,16 +16,25 @@ import { IconButton, Stack } from '@mui/material';
 import { routes } from './routes';
 import { ROUTES } from '../../core/routes';
 import Logo from "../../statics/images/logo.1b6cf8fbdaaee75f39fd.bmp"
+import { useEffect, useState } from 'react';
 
 const drawerWidth = 200;
 
 export default function ClippedDrawer() {
+    const [currentPath, setCurrentPath] = useState<string>("");
     const navigate = useNavigate();
     const { pathname } = useLocation();
 
     const handleLogOut = () => {
         navigate(ROUTES.HOME)
     }
+
+
+    useEffect(() => {
+        if (pathname === ROUTES.BIRTHDAY_REPORTS) return setCurrentPath(ROUTES.REPORTS)
+        return setCurrentPath(pathname);
+    }, [pathname])
+
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -58,12 +67,12 @@ export default function ClippedDrawer() {
                     <List>
                         {routes.map(item => (
                             <ListItemButton sx={{
-                                bgcolor: `${pathname === item.path ? "#1976D2" : "none"}`,
-                                color: `${pathname === item.path ? "#FFF" : "none"}`,
+                                bgcolor: `${currentPath === item.path ? "#1976D2" : "none"}`,
+                                color: `${currentPath === item.path ? "#FFF" : "none"}`,
                             }} onClick={() => navigate(item.path)}>
                                 <ListItem key={item.id} disablePadding>
                                     <ListItemButton >
-                                        <ListItemIcon sx={{ color: `${pathname === item.path ? "#FFF" : "none"}` }}>
+                                        <ListItemIcon sx={{ color: `${currentPath === item.path ? "#FFF" : "none"}` }}>
                                             {item.icon}
                                         </ListItemIcon>
                                         <ListItemText primary={item.name} />
