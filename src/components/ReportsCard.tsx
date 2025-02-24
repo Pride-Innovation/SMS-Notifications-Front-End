@@ -9,11 +9,12 @@ interface IMultiActionAreaCard {
     icon: ReactElement;
     color: string;
     header: string;
+    name: string;
 }
 
-export default function MultiActionAreaCard({ icon, color, header }: IMultiActionAreaCard) {
+export default function MultiActionAreaCard({ icon, color, header, name }: IMultiActionAreaCard) {
     return (
-        <Card sx={{ width: "100%"}}>
+        <Card sx={{ width: "100%" }}>
             <CardActionArea sx={{ display: "flex", justifyContent: "start" }}>
                 <Box sx={{ bgcolor: color, p: 4 }}>
                     {icon}
@@ -23,7 +24,7 @@ export default function MultiActionAreaCard({ icon, color, header }: IMultiActio
                         {header}
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        Lizards are a widespread
+                        Lizards {name} Messages
                     </Typography>
                 </CardContent>
             </CardActionArea>

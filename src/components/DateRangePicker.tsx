@@ -30,8 +30,21 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
   return (
     <LocalizationProvider dateAdapter={AdapterDayjs}>
       <DemoContainer components={['DatePicker']}>
-        <Box display="flex" justifyContent="space-between" gap={2}>
+        <Box display="flex" justifyContent="space-between" gap={2} >
           <DatePicker
+            // slotProps={{ textField: { size: 'small' } }}
+            slotProps={{
+              textField: {
+                size: 'small',
+                InputProps: {
+                  sx: {
+                    '& .MuiSvgIcon-root': {
+                      color: 'blue', // Change this to any color you prefer
+                    },
+                  },
+                },
+              },
+            }}
             label="Start Date"
             value={startDate}
             onChange={(newValue) => onStartDateChange(newValue)}
@@ -39,6 +52,19 @@ const DateRangePicker: React.FC<DateRangePickerProps> = ({
           />
           <DatePicker
             label="End Date"
+            // slotProps={{ textField: { size: 'small' } }}
+            slotProps={{
+              textField: {
+                size: 'small',
+                InputProps: {
+                  sx: {
+                    '& .MuiSvgIcon-root': {
+                      color: 'green', // Change this to any color you prefer
+                    },
+                  },
+                },
+              },
+            }}
             value={endDate}
             onChange={handleEndDateChange}
             format="YYYY-MM-DD"

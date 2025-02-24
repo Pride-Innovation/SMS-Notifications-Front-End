@@ -11,11 +11,11 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import { Outlet, useLocation, useNavigate } from 'react-router';
-import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
 import { IconButton, Stack } from '@mui/material';
 import { routes } from './routes';
 import { ROUTES } from '../../core/routes';
+import Logo from "../../statics/images/logo.1b6cf8fbdaaee75f39fd.bmp"
 
 const drawerWidth = 200;
 
@@ -31,10 +31,12 @@ export default function ClippedDrawer() {
             <CssBaseline />
             <AppBar position="fixed" sx={{ zIndex: (theme) => theme.zIndex.drawer + 1 }}>
                 <Toolbar>
-                    <MessageOutlinedIcon fontSize="medium" />
-                    <Typography variant="h6" noWrap component="div" sx={{ ml: "20px" }}>
-                        SMS Reports
-                    </Typography>
+                    <Box sx={{ display: "flex", alignItems: "center" }}>
+                        <Box component="img" height={50} width={40} src={Logo} />
+                        <Typography variant="h6" noWrap component="div" sx={{ ml: "20px" }}>
+                            Pride Microfinance SMS Reports
+                        </Typography>
+                    </Box>
                     <Stack sx={{ ml: "auto", cursor: "pointer" }} direction="row" alignItems="center">
                         <IconButton onClick={handleLogOut} sx={{ borderRadius: "5px" }}>
                             <LogoutIcon sx={{ mr: 1, color: "#FFF" }} />
@@ -74,7 +76,6 @@ export default function ClippedDrawer() {
                 </Box>
             </Drawer>
             <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
-                {/* <Toolbar /> */}
                 <Box mt={3} />
                 <Outlet />
             </Box>
