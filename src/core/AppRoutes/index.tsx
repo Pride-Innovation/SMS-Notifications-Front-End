@@ -4,6 +4,7 @@ import Logs from '../../Pages/Logs/loans'
 import FileUpload from '../../Pages/FileUpload'
 import DashboardLayoutBasic from '../../Pages/Dashboard'
 import Login from '../../Pages/Authentication/Login'
+import BirthdayLogs from '../../Pages/Logs/birthdays'
 
 const AppRoutes = () => {
     return (
@@ -11,6 +12,7 @@ const AppRoutes = () => {
             <Route index element={<Login />} />
             <Route path={ROUTES.REPORTS} element={<DashboardLayoutBasic />}>
                 <Route index element={<Logs />} />
+                <Route path={ROUTES.BIRTHDAY_REPORTS} element={<BirthdayLogs />} />
                 <Route path={ROUTES.UPLOADS} element={<FileUpload />} />
             </Route>
 

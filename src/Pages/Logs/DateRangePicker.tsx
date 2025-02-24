@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React from 'react';
 import DateRangePicker from '../../components/DateRangePicker';
 import { IParentComponent } from './interface';
 import MultiActionAreaCard from '../../components/ReportsCard';
@@ -6,16 +6,18 @@ import { Card, Grid, Stack } from '@mui/material';
 import CakeIcon from '@mui/icons-material/Cake';
 import CalendarMonthIcon from '@mui/icons-material/CalendarMonth';
 import Utills from './utills';
-import { CardContext } from '../../context/CardContext';
+import { useNavigate } from 'react-router';
+import { ROUTES } from '../../core/routes';
 
 const ParentComponent: React.FC<IParentComponent> = ({
     startDate, endDate, handleEndDateChange, handleStartDateChange
 }) => {
     const { cards } = Utills();
-    const { setCurrentCard } = useContext(CardContext)
+    const navigate = useNavigate();
 
     const handleCardClick = (name: string) => {
-        setCurrentCard(name)
+        if (name === cards.birthdays) navigate(ROUTES.BIRTHDAY_REPORTS);
+        if (name === cards.loans) navigate(ROUTES.REPORTS);
     }
 
     return (

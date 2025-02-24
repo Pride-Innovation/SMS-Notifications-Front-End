@@ -11,7 +11,7 @@ import CustomTablePagination from '../TablePagination';
 import moment from "moment";
 
 
-const index = () => {
+const BirthdayLogs = () => {
     const { startDate, endDate, setEndDate, setStartDate } = useContext(DateContext);
     const { currentDate, pastDate } = Utills();
     const {
@@ -133,4 +133,4 @@ const index = () => {
     )
 }
 
-export default index
+export default BirthdayLogs

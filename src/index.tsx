@@ -5,7 +5,6 @@ import App from './App';
 import { LoansContextProvider } from './context';
 import { DateContextProvider } from './context/DateContext';
 import { PageContextProvider } from './context/PageContext';
-import { CardContextProvider } from './context/CardContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -13,13 +12,11 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <LoansContextProvider>
-      <CardContextProvider>
         <PageContextProvider>
           <DateContextProvider>
             <App />
           </DateContextProvider>
         </PageContextProvider>
-      </CardContextProvider>
     </LoansContextProvider>
   </React.StrictMode>
 );
