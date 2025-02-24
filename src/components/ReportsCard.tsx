@@ -1,0 +1,32 @@
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import CardActionArea from '@mui/material/CardActionArea';
+import { Box } from '@mui/material';
+import { ReactElement } from 'react';
+
+interface IMultiActionAreaCard {
+    icon: ReactElement;
+    color: string;
+    header: string;
+}
+
+export default function MultiActionAreaCard({ icon, color, header }: IMultiActionAreaCard) {
+    return (
+        <Card sx={{ width: "100%"}}>
+            <CardActionArea sx={{ display: "flex", justifyContent: "start" }}>
+                <Box sx={{ bgcolor: color, p: 4 }}>
+                    {icon}
+                </Box>
+                <CardContent>
+                    <Typography gutterBottom variant="h5" component="div">
+                        {header}
+                    </Typography>
+                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
+                        Lizards are a widespread
+                    </Typography>
+                </CardContent>
+            </CardActionArea>
+        </Card>
+    );
+}

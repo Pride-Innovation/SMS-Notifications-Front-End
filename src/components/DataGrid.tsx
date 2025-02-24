@@ -16,7 +16,7 @@ export default function DataTable() {
             headerName: 'CUSTOMER NUMBER',
         },
         {
-            field: 'ACCT_NM',
+            field: 'CUST_NM',
             flex: 1,
             headerName: 'ACCOUNT NAME',
         },
