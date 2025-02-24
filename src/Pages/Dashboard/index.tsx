@@ -11,16 +11,22 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import { Outlet, useNavigate } from 'react-router';
+import { Outlet, useLocation, useNavigate } from 'react-router';
 import MessageOutlinedIcon from '@mui/icons-material/MessageOutlined';
 import LogoutIcon from '@mui/icons-material/Logout';
-import { Stack } from '@mui/material';
+import { IconButton, Stack } from '@mui/material';
 import { routes } from './routes';
+import { ROUTES } from '../../core/routes';
 
 const drawerWidth = 200;
 
 export default function ClippedDrawer() {
-    const navigate = useNavigate()
+    const navigate = useNavigate();
+    const { pathname } = useLocation();
+
+    const handleLogOut = () => {
+        navigate(ROUTES.HOME)
+    }
     return (
         <Box sx={{ display: 'flex' }}>
             <CssBaseline />
@@ -31,8 +37,10 @@ export default function ClippedDrawer() {
                         SMS Reports
                     </Typography>
                     <Stack sx={{ ml: "auto", cursor: "pointer" }} direction="row" alignItems="center">
-                        <LogoutIcon sx={{ mr: 1 }} />
-                        <Typography variant="body1">Logout</Typography>
+                        <IconButton onClick={handleLogOut} sx={{ borderRadius: "5px" }}>
+                            <LogoutIcon sx={{ mr: 1, color: "#FFF" }} />
+                            <Typography variant="body1" sx={{ color: "#FFF" }}>Logout</Typography>
+                        </IconButton>
                     </Stack>
                 </Toolbar>
             </AppBar>
@@ -48,10 +56,13 @@ export default function ClippedDrawer() {
                 <Box sx={{ overflow: 'auto' }}>
                     <List>
                         {routes.map(item => (
-                            <ListItemButton onClick={() => navigate(item.path)}>
+                            <ListItemButton sx={{
+                                bgcolor: `${pathname === item.path ? "#1976D2" : "none"}`,
+                                color: `${pathname === item.path ? "#FFF" : "none"}`,
+                            }} onClick={() => navigate(item.path)}>
                                 <ListItem key={item.id} disablePadding>
-                                    <ListItemButton>
-                                        <ListItemIcon>
+                                    <ListItemButton >
+                                        <ListItemIcon sx={{ color: `${pathname === item.path ? "#FFF" : "none"}` }}>
                                             {item.icon}
                                         </ListItemIcon>
                                         <ListItemText primary={item.name} />
