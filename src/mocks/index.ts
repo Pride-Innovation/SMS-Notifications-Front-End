@@ -1,7 +1,7 @@
 import { IBirthdayLog } from "../Pages/Logs/interface";
 
 
-export const birthdayLogs: IBirthdayLog[] = [
+export const birthdayLogsMocks: IBirthdayLog[] = [
     {
         id: 1,
         phone_number: "123-456-7890",

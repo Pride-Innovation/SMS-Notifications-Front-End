@@ -5,17 +5,18 @@ import { DateContext } from '../../../context/DateContext';
 import { Dayjs } from "dayjs";
 import Utills from '../utills';
 import { PageContext } from '../../../context/PageContext';
-import { ILogsResponse } from '../interface';
+// import { ILogsResponse } from '../interface';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import CustomTablePagination from '../TablePagination';
 import moment from "moment";
+import { birthdayLogsMocks } from '../../../mocks';
 
 
 const BirthdayLogs = () => {
     const { startDate, endDate, setEndDate, setStartDate } = useContext(DateContext);
     const { currentDate, pastDate } = Utills();
     const {
-        pageSize,
+        // pageSize,
         birthdayLogs,
         setBirthdayLogs,
         count,
@@ -40,8 +41,8 @@ const BirthdayLogs = () => {
         const end = endDate?.format('YYYY-MM-DD') as string;
         if (!start || !end) return;
         // const response = await fetchLogsService(start, end, pageSize, 1) as ILogsResponse;
-        setCount(birthdayLogs?.length);
-        setBirthdayLogs(birthdayLogs);
+        setCount(birthdayLogsMocks?.length);
+        setBirthdayLogs(birthdayLogsMocks);
     }
 
     useEffect(() => { fetchLogs() }, [currentDate, pastDate]);
@@ -65,7 +66,7 @@ const BirthdayLogs = () => {
         {
             field: 'created_at',
             flex: 1.2,
-            headerName: 'CREATED AT',
+            headerName: 'Date of Birth',
             renderCell: (params) => (
                 <Typography sx={{ height: "100%", display: "flex", alignItems: "center", fontSize: 14 }}>
                     {moment(params.row.created_at).format('MMMM Do YYYY, h:mm:ss a')}
@@ -73,15 +74,9 @@ const BirthdayLogs = () => {
             )
         },
         {
-            field: 'due_date',
-            flex: 0.5,
-            headerName: 'DUE DATE',
-        },
-        {
-            field: 'amount_due',
+            field: 'email',
             flex: 1,
-            headerName: 'AMOUNT DUE (UGX)',
-            type: 'number',
+            headerName: 'Email',
         }
     ];
 

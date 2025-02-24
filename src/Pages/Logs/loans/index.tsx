@@ -1,21 +1,21 @@
 import { useContext, useEffect } from "react"
 import { ILogsResponse } from "../interface"
 import { fetchLogsService } from "../../FileUpload/service";
-import { Box, Button, Grid, Typography } from "@mui/material";
+import { Box, Grid, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
 import moment from "moment";
 import Utills from "../utills";
 import ParentComponent from "../DateRangePicker";
 import { Dayjs } from "dayjs";
 import { DateContext } from "../../../context/DateContext";
-import { useNavigate } from "react-router";
-import { ROUTES } from "../../../core/routes";
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+// import { useNavigate } from "react-router";
+// import { ROUTES } from "../../../core/routes";
+// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CustomTablePagination from "../TablePagination";
 import { PageContext } from "../../../context/PageContext";
 
 const Logs = () => {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
     const { currentDate, pastDate  } = Utills();
     const { startDate, endDate, setEndDate, setStartDate } = useContext(DateContext);
     const {
