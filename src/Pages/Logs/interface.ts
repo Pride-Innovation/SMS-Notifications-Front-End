@@ -27,8 +27,7 @@ interface IBirthdayLog {
 
 interface IResults {
     count: number;
-    logs: Array<ILogs>;
-
+    logs: Array<ILogs | IBirthdayLog>;
 }
 
 interface ILogsResponse {
@@ -51,7 +50,8 @@ interface IRequestBody {
 
 interface ICustomTablePagination {
     start: string;
-    end: string
+    end: string;
+    endpoint: string
 }
 
 interface IParentComponent {

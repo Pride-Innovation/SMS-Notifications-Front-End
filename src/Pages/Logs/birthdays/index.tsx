@@ -5,18 +5,18 @@ import { DateContext } from '../../../context/DateContext';
 import { Dayjs } from "dayjs";
 import Utills from '../utills';
 import { PageContext } from '../../../context/PageContext';
-// import { ILogsResponse } from '../interface';
+import { IBirthdayLog, ILogsResponse } from '../interface';
 import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import CustomTablePagination from '../TablePagination';
 import moment from "moment";
-import { birthdayLogsMocks } from '../../../mocks';
+import { fetchLogsService } from '../../FileUpload/service';
 
 
 const BirthdayLogs = () => {
     const { startDate, endDate, setEndDate, setStartDate } = useContext(DateContext);
-    const { currentDate, pastDate } = Utills();
+    const { currentDate, pastDate, birthdaysEndpoint } = Utills();
     const {
-        // pageSize,
+        pageSize,
         birthdayLogs,
         setBirthdayLogs,
         count,
@@ -33,16 +33,17 @@ const BirthdayLogs = () => {
 
     const { handleTablePagination } = CustomTablePagination({
         start: startDate?.format('YYYY-MM-DD') as string,
-        end: endDate?.format('YYYY-MM-DD') as string
+        end: endDate?.format('YYYY-MM-DD') as string,
+        endpoint: birthdaysEndpoint
     });
 
     const fetchLogs = async () => {
         const start = startDate?.format('YYYY-MM-DD') as string;
         const end = endDate?.format('YYYY-MM-DD') as string;
         if (!start || !end) return;
-        // const response = await fetchLogsService(start, end, pageSize, 1) as ILogsResponse;
-        setCount(birthdayLogsMocks?.length);
-        setBirthdayLogs(birthdayLogsMocks);
+        const response = await fetchLogsService(start, end, pageSize, 1, birthdaysEndpoint) as ILogsResponse;
+        setCount(response?.count);
+        setBirthdayLogs(response?.results.logs as IBirthdayLog[]);
     }
 
     useEffect(() => { fetchLogs() }, [currentDate, pastDate]);

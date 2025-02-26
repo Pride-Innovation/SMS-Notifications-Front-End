@@ -1,5 +1,5 @@
 import { useContext, useEffect } from "react"
-import { ILogsResponse } from "../interface"
+import { ILogs, ILogsResponse } from "../interface"
 import { fetchLogsService } from "../../FileUpload/service";
 import { Box, Grid, Typography } from "@mui/material";
 import { DataGrid, GridColDef } from "@mui/x-data-grid";
@@ -16,7 +16,7 @@ import { PageContext } from "../../../context/PageContext";
 
 const Logs = () => {
     // const navigate = useNavigate();
-    const { currentDate, pastDate  } = Utills();
+    const { currentDate, pastDate, logsEndpoint  } = Utills();
     const { startDate, endDate, setEndDate, setStartDate } = useContext(DateContext);
     const {
         pageSize,
@@ -28,7 +28,8 @@ const Logs = () => {
 
     const { handleTablePagination } = CustomTablePagination({
         start: startDate?.format('YYYY-MM-DD') as string,
-        end: endDate?.format('YYYY-MM-DD') as string
+        end: endDate?.format('YYYY-MM-DD') as string,
+        endpoint: logsEndpoint
     });
 
     const handleStartDateChange = (date: Dayjs | null) => {
@@ -43,9 +44,9 @@ const Logs = () => {
         const start = startDate?.format('YYYY-MM-DD') as string;
         const end = endDate?.format('YYYY-MM-DD') as string;
         if (!start || !end) return;
-        const response = await fetchLogsService(start, end, pageSize, 1) as ILogsResponse;
+        const response = await fetchLogsService(start, end, pageSize, 1, logsEndpoint) as ILogsResponse;
         setCount(response?.count);
-        setLogs(response?.results.logs);
+        setLogs(response?.results.logs as ILogs[]);
     }
 
     useEffect(() => { fetchLogs() }, [currentDate, pastDate]);

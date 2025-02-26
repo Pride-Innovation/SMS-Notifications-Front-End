@@ -3,6 +3,9 @@ import { DateContext } from "../../context/DateContext";
 import dayjs, { Dayjs } from "dayjs";
 
 const Utills = () => {
+    const logsEndpoint = "logs"
+    const birthdaysEndpoint = "birthdays"
+
     const { setEndDate, setStartDate, startDate, endDate } = useContext(DateContext);
     const currentDate = new Date();
     const pastDate = new Date();
@@ -29,6 +32,8 @@ const Utills = () => {
         currentDate: startDate,
         pastDate: endDate,
         cards,
+        logsEndpoint,
+        birthdaysEndpoint
     };
 }
 
