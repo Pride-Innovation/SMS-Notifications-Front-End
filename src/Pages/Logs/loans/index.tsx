@@ -8,14 +8,10 @@ import Utills from "../utills";
 import ParentComponent from "../DateRangePicker";
 import { Dayjs } from "dayjs";
 import { DateContext } from "../../../context/DateContext";
-// import { useNavigate } from "react-router";
-// import { ROUTES } from "../../../core/routes";
-// import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import CustomTablePagination from "../TablePagination";
 import { PageContext } from "../../../context/PageContext";
 
 const Logs = () => {
-    // const navigate = useNavigate();
     const { currentDate, pastDate, logsEndpoint  } = Utills();
     const { startDate, endDate, setEndDate, setStartDate } = useContext(DateContext);
     const {

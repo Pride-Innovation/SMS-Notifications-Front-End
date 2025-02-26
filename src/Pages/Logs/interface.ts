@@ -16,13 +16,12 @@ interface ILogs {
 
 interface IBirthdayLog {
     id?: string | number;
-    phone_number: string;
-    account_name: string;
+    contact: string;
+    acct_nm: string;
     status: string;
     created_at: string;
     client_type: string;
-    email: string;
-    dateOfBirth: string
+    date_of_birth: string
 }
 
 interface IResults {

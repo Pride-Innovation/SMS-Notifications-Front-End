@@ -50,12 +50,12 @@ const BirthdayLogs = () => {
 
     const columns: GridColDef[] = [
         {
-            field: 'phone_number',
+            field: 'contact',
             flex: 0.8,
             headerName: 'TELEPHONE NUMBER',
         },
         {
-            field: 'account_name',
+            field: 'acct_nm',
             flex: 1,
             headerName: 'ACCOUNT NAME',
         },
@@ -65,19 +65,19 @@ const BirthdayLogs = () => {
             headerName: 'STATUS',
         },
         {
-            field: 'created_at',
+            field: 'date_of_birth',
             flex: 1.2,
             headerName: 'Date of Birth',
             renderCell: (params) => (
                 <Typography sx={{ height: "100%", display: "flex", alignItems: "center", fontSize: 14 }}>
-                    {moment(params.row.created_at).format('MMMM Do YYYY, h:mm:ss a')}
+                    {moment(params.row.created_at).format('MMMM Do YYYY')}
                 </Typography>
             )
         },
         {
-            field: 'email',
+            field: 'client_type',
             flex: 1,
-            headerName: 'Email',
+            headerName: 'Client Type',
         }
     ];
 
