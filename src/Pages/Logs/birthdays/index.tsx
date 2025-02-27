@@ -10,7 +10,7 @@ import { DataGrid, GridColDef } from '@mui/x-data-grid';
 import CustomTablePagination from '../TablePagination';
 import moment from "moment";
 import { fetchLogsService } from '../../FileUpload/service';
-
+import CustomToolbar from '../../../components/CustomGridToolbarExport';
 
 const BirthdayLogs = () => {
     const { startDate, endDate, setEndDate, setStartDate } = useContext(DateContext);
@@ -109,6 +109,15 @@ const BirthdayLogs = () => {
                             }}
                             loading={false}
                             rows={birthdayLogs}
+                            slots={{
+                                toolbar: CustomToolbar
+                            }}
+                            slotProps={{
+                                toolbar: {
+                                    title: "Birthday Messages Report",
+                                },
+
+                            }}
                             columns={columns}
                             rowCount={birthdayCount}
                             paginationMode={"server"}
@@ -120,7 +129,7 @@ const BirthdayLogs = () => {
                                 },
                             }}
                             pageSizeOptions={[5, 10, 25]}
-                            checkboxSelection
+                            // checkboxSelection
                             disableRowSelectionOnClick
                             onPaginationModelChange={handleTablePagination}
                         />}

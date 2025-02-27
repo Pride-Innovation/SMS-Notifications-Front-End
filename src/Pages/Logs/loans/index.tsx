@@ -10,9 +10,10 @@ import { Dayjs } from "dayjs";
 import { DateContext } from "../../../context/DateContext";
 import CustomTablePagination from "../TablePagination";
 import { PageContext } from "../../../context/PageContext";
+import CustomToolbar from "../../../components/CustomGridToolbarExport";
 
 const Logs = () => {
-    const { currentDate, pastDate, logsEndpoint  } = Utills();
+    const { currentDate, pastDate, logsEndpoint } = Utills();
     const { startDate, endDate, setEndDate, setStartDate } = useContext(DateContext);
     const {
         pageSize,
@@ -113,6 +114,15 @@ const Logs = () => {
                                 },
                             }}
                             loading={false}
+                            slots={{
+                                toolbar: CustomToolbar
+                            }}
+                            slotProps={{
+                                toolbar: { 
+                                    title: "Loans Due Messages Report",
+                                 },
+                                
+                            }}
                             rows={logs}
                             columns={columns}
                             rowCount={count}
@@ -125,7 +135,7 @@ const Logs = () => {
                                 },
                             }}
                             pageSizeOptions={[5, 10, 25]}
-                            checkboxSelection
+                            // checkboxSelection
                             disableRowSelectionOnClick
                             onPaginationModelChange={handleTablePagination}
                         />}

@@ -5,6 +5,7 @@ import App from './App';
 import { LoansContextProvider } from './context';
 import { DateContextProvider } from './context/DateContext';
 import { PageContextProvider } from './context/PageContext';
+import FileContextProvider from './context/FileContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,11 +13,13 @@ const root = ReactDOM.createRoot(
 root.render(
   <React.StrictMode>
     <LoansContextProvider>
-        <PageContextProvider>
-          <DateContextProvider>
+      <PageContextProvider>
+        <DateContextProvider>
+          <FileContextProvider>
             <App />
-          </DateContextProvider>
-        </PageContextProvider>
+          </FileContextProvider>
+        </DateContextProvider>
+      </PageContextProvider>
     </LoansContextProvider>
   </React.StrictMode>
 );
