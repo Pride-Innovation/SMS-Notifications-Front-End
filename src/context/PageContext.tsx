@@ -12,11 +12,13 @@ interface IPageContext {
     pageSize: number;
     page: number;
     count: number;
+    birthdayCount: number;
     logs: Array<ILogs>;
     birthdayLogs: Array<IBirthdayLog>;
     setPageSize: Dispatch<SetStateAction<number>>;
     setPage: Dispatch<SetStateAction<number>>;
     setCount: Dispatch<SetStateAction<number>>;
+    setBirthdayCount: Dispatch<SetStateAction<number>>;
     setLogs: Dispatch<SetStateAction<Array<ILogs>>>;
     setBirthdayLogs: Dispatch<SetStateAction<Array<IBirthdayLog>>>;
 }
@@ -28,6 +30,7 @@ const PageContextProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     const [logs, setLogs] = useState<ILogs[]>([] as Array<ILogs>);
     const [birthdayLogs, setBirthdayLogs] = useState<IBirthdayLog[]>([] as Array<IBirthdayLog>);
     const [count, setCount] = useState<number>(0);
+    const [birthdayCount, setBirthdayCount] = useState<number>(0);
 
     return (
         <PageContext.Provider value={{
@@ -40,7 +43,9 @@ const PageContextProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
             count,
             setCount,
             birthdayLogs,
-            setBirthdayLogs
+            setBirthdayLogs,
+            birthdayCount,
+            setBirthdayCount
         }}>
             {children}
         </PageContext.Provider>

@@ -19,8 +19,8 @@ const BirthdayLogs = () => {
         pageSize,
         birthdayLogs,
         setBirthdayLogs,
-        count,
-        setCount
+        birthdayCount,
+        setBirthdayCount,
     } = useContext(PageContext);
 
     const handleStartDateChange = (date: Dayjs | null) => {
@@ -42,7 +42,7 @@ const BirthdayLogs = () => {
         const end = endDate?.format('YYYY-MM-DD') as string;
         if (!start || !end) return;
         const response = await fetchLogsService(start, end, pageSize, 1, birthdaysEndpoint) as ILogsResponse;
-        setCount(response?.count);
+        setBirthdayCount(response?.count);
         setBirthdayLogs(response?.results.logs as IBirthdayLog[]);
     }
 
@@ -90,6 +90,7 @@ const BirthdayLogs = () => {
                         endDate={endDate}
                         handleEndDateChange={handleEndDateChange}
                         handleStartDateChange={handleStartDateChange}
+                        birthdayCount={birthdayCount}
                     />
                 </Box>
             </Grid>
@@ -109,7 +110,7 @@ const BirthdayLogs = () => {
                             loading={false}
                             rows={birthdayLogs}
                             columns={columns}
-                            rowCount={count}
+                            rowCount={birthdayCount}
                             paginationMode={"server"}
                             initialState={{
                                 pagination: {

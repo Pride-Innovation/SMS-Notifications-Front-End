@@ -10,7 +10,8 @@ interface IMultiActionAreaCard {
     color: string;
     header: string;
     name: string;
-    handleCardClick: (name: string) => void
+    handleCardClick: (name: string) => void;
+    total: string | number
 }
 
 export default function MultiActionAreaCard({
@@ -18,7 +19,8 @@ export default function MultiActionAreaCard({
     color,
     header,
     name,
-    handleCardClick
+    handleCardClick,
+    total
 }: IMultiActionAreaCard) {
     return (
         <Card sx={{ width: "100%" }}>
@@ -31,7 +33,7 @@ export default function MultiActionAreaCard({
                         {header}
                     </Typography>
                     <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        200 {name} Messages
+                        {total} {name} Messages
                     </Typography>
                 </CardContent>
             </CardActionArea>

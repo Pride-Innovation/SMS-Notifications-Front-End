@@ -95,6 +95,7 @@ const Logs = () => {
                         endDate={endDate}
                         handleEndDateChange={handleEndDateChange}
                         handleStartDateChange={handleStartDateChange}
+                        count={count}
                     />
                 </Box>
             </Grid>

@@ -58,6 +58,8 @@ interface IParentComponent {
     endDate: Dayjs | null;
     handleStartDateChange: (date: Dayjs | null) => void;
     handleEndDateChange: (date: Dayjs | null) => void;
+    count?: number;
+    birthdayCount?: number
 }
 
 export type { ILogs, ILogsResponse, IRequestBody, IParentComponent, ICustomTablePagination, IBirthdayLog };

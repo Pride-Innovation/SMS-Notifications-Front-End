@@ -10,7 +10,7 @@ import { useNavigate } from 'react-router';
 import { ROUTES } from '../../core/routes';
 
 const ParentComponent: React.FC<IParentComponent> = ({
-    startDate, endDate, handleEndDateChange, handleStartDateChange
+    startDate, endDate, handleEndDateChange, handleStartDateChange, count, birthdayCount
 }) => {
     const { cards } = Utills();
     const navigate = useNavigate();
@@ -29,12 +29,14 @@ const ParentComponent: React.FC<IParentComponent> = ({
                         name={cards.loans}
                         header='Loans Due'
                         color="blue"
+                        total={count as number}
                         icon={<CalendarMonthIcon fontSize='large' sx={{ color: "#fff" }} />} />
                     <MultiActionAreaCard
                         handleCardClick={handleCardClick}
                         name={cards.birthdays}
                         header='Birthdays'
                         color='green'
+                        total={birthdayCount as number}
                         icon={<CakeIcon fontSize='large' sx={{ color: "#fff" }} />} />
                 </Stack>
             </Grid>

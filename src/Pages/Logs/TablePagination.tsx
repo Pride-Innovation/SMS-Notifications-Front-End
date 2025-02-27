@@ -7,7 +7,14 @@ import Utills from "./utills";
 
 const CustomTablePagination = ({ start, end, endpoint }: ICustomTablePagination) => {
 
-    const { setPage, setPageSize, setLogs, setCount, setBirthdayLogs } = useContext(PageContext);
+    const {
+        setPage,
+        setPageSize,
+        setLogs,
+        setCount,
+        setBirthdayLogs,
+        setBirthdayCount,
+    } = useContext(PageContext);
     const { logsEndpoint } = Utills()
 
     const handleTablePagination = async (model: GridPaginationModel) => {
@@ -23,8 +30,12 @@ const CustomTablePagination = ({ start, end, endpoint }: ICustomTablePagination)
                 model.page + 1,
                 endpoint
             ) as ILogsResponse;
-            setCount(response.count)
 
+            // setCount(response.count)
+
+            endpoint === logsEndpoint ?  setCount(response.count)
+                : setBirthdayCount(response.count)
+                
             endpoint === logsEndpoint ? setLogs(response.results.logs as ILogs[])
                 : setBirthdayLogs(response.results.logs as IBirthdayLog[])
 
