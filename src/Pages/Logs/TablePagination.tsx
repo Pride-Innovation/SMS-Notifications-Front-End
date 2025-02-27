@@ -31,13 +31,15 @@ const CustomTablePagination = ({ start, end, endpoint }: ICustomTablePagination)
                 endpoint
             ) as ILogsResponse;
 
-            // setCount(response.count)
+            const isLogsEndpoint = endpoint === logsEndpoint;
 
-            endpoint === logsEndpoint ?  setCount(response.count)
-                : setBirthdayCount(response.count)
-                
-            endpoint === logsEndpoint ? setLogs(response.results.logs as ILogs[])
-                : setBirthdayLogs(response.results.logs as IBirthdayLog[])
+            if (isLogsEndpoint) {
+                setCount(response.count);
+                setLogs(response.results.logs as ILogs[]);
+            } else {
+                setBirthdayCount(response.count);
+                setBirthdayLogs(response.results.logs as IBirthdayLog[]);
+            }
 
         } catch (error) {
             console.log(error)
