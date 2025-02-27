@@ -17,6 +17,7 @@ import { routes } from './routes';
 import { ROUTES } from '../../core/routes';
 import Logo from "../../statics/images/logo.1b6cf8fbdaaee75f39fd.bmp"
 import { useEffect, useState } from 'react';
+import AuthenticationUtills from '../Authentication/utils';
 
 const drawerWidth = 200;
 
@@ -24,8 +25,10 @@ export default function ClippedDrawer() {
     const [currentPath, setCurrentPath] = useState<string>("");
     const navigate = useNavigate();
     const { pathname } = useLocation();
+    const { clearSession } = AuthenticationUtills()
 
     const handleLogOut = () => {
+        clearSession()
         navigate(ROUTES.HOME)
     }
 

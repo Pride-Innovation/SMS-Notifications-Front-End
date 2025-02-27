@@ -23,7 +23,7 @@ const CustomGridToolbarExport = (props: ButtonProps) => {
 function CustomToolbar({ title = "Messages Report" }: { title?: string }) {
     return (
         <GridToolbarContainer sx={{ width: '100%', display: 'flex', p: '20px', bgcolor: "#EEEEEE" }}>
-            <TypographyComponent size='14px' weight={600} sx={{ textTransform: "uppercase" }}>
+            <TypographyComponent size='14px' weight={400} sx={{ textTransform: "uppercase" }}>
                 {title}
             </TypographyComponent>
             <Stack direction="row" spacing={2} sx={{ ml: "auto" }}>

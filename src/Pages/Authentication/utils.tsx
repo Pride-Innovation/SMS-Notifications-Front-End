@@ -14,6 +14,10 @@ const AuthenticationUtills = () => {
         return false;
     }
 
+    const clearSession = () => {
+        sessionStorage.removeItem(accessToken);
+        sessionStorage.removeItem(currentUser);
+    }
 
     const handleSessionStorage = (user: any, token: string) => {
         sessionStorage.setItem(accessToken, token);
@@ -24,7 +28,8 @@ const AuthenticationUtills = () => {
         getCurrentUser,
         isAuthenticated,
         accessToken,
-        handleSessionStorage
+        handleSessionStorage,
+        clearSession
     })
 }
 
