@@ -79,8 +79,8 @@ const Login = () => {
                     })}
                 >
                     <Box>
-                        <TypographyComponent sx={{ mb: 2 }} size={"20px"} weight={600}>Pride Microfinance Notifications App</TypographyComponent>
-                        <TypographyComponent sx={{ mb: 2 }} size='16px' weight={500}>Sign In to your account</TypographyComponent>
+                        <TypographyComponent sx={{ mb: 2, textAlign: "center" }} size={"20px"} weight={600}>Pride Microfinance Customer Engagement</TypographyComponent>
+                        <TypographyComponent sx={{ mb: 2, textAlign: "center" }} size='16px' weight={500}>Sign In to your account</TypographyComponent>
                     </Box>
                     <Box sx={{ width: "100%", display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", flex: 1 }}>
                         <form

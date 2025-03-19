@@ -32,8 +32,8 @@ export default function MultiActionAreaCard({
                     <Typography gutterBottom variant="h5" component="div">
                         {header}
                     </Typography>
-                    <Typography variant="body2" sx={{ color: 'text.secondary' }}>
-                        {total} {name} Messages
+                    <Typography variant="body2" sx={{ color: 'red' }}>
+                        <b style={{ fontSize: "18px"}}>  {total}</b> {name} Messages
                     </Typography>
                 </CardContent>
             </CardActionArea>
